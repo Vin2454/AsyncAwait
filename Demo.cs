@@ -51,3 +51,19 @@ static void Main(string[] args)
             await Task.Delay(5000);
             return "method1";
         }
+
+//3 output of line 62 System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`
+  static void Main(string[] args)
+        {
+            CallMethods().GetAwaiter().GetResult();
+        }
+        private static async Task CallMethods()
+        {
+            Console.WriteLine(Method1());//this is the change
+            Console.WriteLine("success");
+        }
+        private static async Task<string> Method1()
+        {
+            await Task.Delay(500);
+            return "method1";
+        }
