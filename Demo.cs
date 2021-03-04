@@ -67,3 +67,17 @@ static void Main(string[] args)
             await Task.Delay(500);
             return "method1";
         }
+
+//4 problem: The success dialog displays before the download/blur operation completes
+void OnButtonClick()
+{
+  DownloadAndBlur("https://...jpg");
+  ShowDialog("Success!");
+}
+
+async Task DownloadAndBlur(string url)
+{
+  await DownloadImage(...);  
+  await BlurImage(...);
+  await SaveImage(...);
+}
